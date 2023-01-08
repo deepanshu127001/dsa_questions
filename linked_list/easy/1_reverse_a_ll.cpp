@@ -25,7 +25,13 @@ public:
     }
 
     //recursive approach -  2
-    ListNode* reverseListRecursive2(){
-        
+    ListNode* reverseListRecursive2(ListNode *head){
+        if(head == NULL || head->next == NULL){
+            return head;
+        }
+        ListNode *splitedLinkedList = reverseListRecursive2(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return splitedLinkedList;
     }
 };
